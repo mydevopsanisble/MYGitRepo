@@ -1,0 +1,55 @@
+
+Prometheus Installation
+
+first login with root user
+sudo su -
+sudo apt-get update
+sudo apt-get install zip unzip tar git -y
+
+wget https://github.com/prometheus/prometheus/releases/download/v2.19.2/prometheus-2.19.2.linux-amd64.tar.gz
+tar -xvf prometheus-2.19.2.linux-amd64.tar.gz
+cd prometheus-2.19.2
+./prometheus
+ 
+
+open browser enter instanceipaddress:9090
+
+
+next open another window and connect to machine and install node_extractor as below
+
+wget https://github.com/prometheus/node_exporter/releases/download/v1.0.1/node_exporter-1.0.1.linux-amd64.tar.gz
+tar -xvf node_exporter-1.0.1
+cd node_exporter-1.0.1
+./node_exporter
+
+open browser enter instanceipaddress:9100
+
+open another window connect to machine with root user
+sudo su -
+cd prometheus-2.19.2
+
+ls -lrt
+vi prometheus.yml
+ add as below
+
+- job_name: 'node_extractor'
+  static-CONFIGS:
+  - targets: ['prometheusipadd:9100','anothermachibneipadd:9100']
+
+save the file.
+
+restart prometheus
+
+
+===========
+
+grafana..installation
+
+wget https://dl.grafana.com/oss/release/grafana-7.0.5.linux-amd64.tar.gz
+tar -zxvf grafana-7.0.5.linux-amd64.tar.gz
+cd grafana-7.0.5
+./bin/grafana-server
+
+====
+
+
