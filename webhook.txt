@@ -1,0 +1,40 @@
+Webhooks allows developers to triggers jobs in CI server (such as Jenkins) for every code changes in SCM. In this article, we will learn how to trigger Jenkins jobs instantly for every code change.
+
+
+
+Pre-Requistes:
+
+Make sure you install GitHub integration plug-in in Jenkins
+
+
+1. Go to Jenkins, Create a job. If you already have a existing job, click on configure. Go to build triggers section and choose the below option - GitHub hook trigger for GitScm pooling.
+
+
+
+2. Now go to GitHub, choose your repository. Click on settings, Webhooks.
+
+
+3. Click on Add web hook.
+
+4. You need to enter Jenkins URL & add /github-webhook/ in the end
+http://jenkins_public_dns_name:8080/github-webhook/
+
+ 
+
+
+5. Now enter payload URL as Jenkins URL, select just push event, click on active. Click on Add webhook
+
+6. After you created, click on webhooks.
+
+
+7. Click on recent deliveries and you should get response 200 as below:
+
+
+8. Now go and make some code changes in your repo in GitHub.
+
+9. If you look in Jenkins, you will see job is getting triggered immediately.
+
+
+
+You can watch these steps on my YouTube channel as well, please see below:
+
